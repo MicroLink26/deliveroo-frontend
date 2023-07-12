@@ -1,11 +1,24 @@
 import { nanoid } from "nanoid";
-export default function ({ meal }) {
+
+export default function ({ meal, setShoppingCart }) {
+  const item = { item: meal.title, number: 1, price: meal.price };
+  //onClick={setShoppingCart("ADD", item)}
+  //console.log(setShoppingCart);
+  const addToCart = (elem) => {
+    setShoppingCart("ADD", elem);
+  };
+
   return (
-    <div className="MenuItem">
+    <div
+      className="MenuItem"
+      onClick={() => {
+        addToCart(item);
+      }}
+    >
       <div className="MenuItem--card">
         <div className="MenuItem--texts">
           <h3>{meal.title}</h3>
-          <p>{meal.description}</p>
+          <p title={meal.description}>{meal.description}</p>
           <div className="MenuItem--infos">
             <span className="MenuItem--price">{meal.price} €</span>
             {meal.popular && (

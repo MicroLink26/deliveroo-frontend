@@ -318,7 +318,7 @@ code {
   line-height: 1.3rem;
   margin: 0 0 1rem;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
 }
 
 .MenuItem--infos {
@@ -469,4 +469,11 @@ code {
 
 .Cart-minus-button-disabled {
   justify-content: center;
+}
+
+.green-button {
+  width: 20px;
+  height: 20px;
+  color: rgb(0, 206, 189);
+  cursor: pointer;
 }
