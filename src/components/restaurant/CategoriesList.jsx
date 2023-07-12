@@ -4,8 +4,6 @@ import Meal from "./Meal";
 export default function ({ categoriesList, setShoppingCart }) {
   return (
     <div className="Menu">
-      {/* ici les categories */}
-
       {categoriesList.map((category) => {
         return (
           category.meals.length > 0 && (

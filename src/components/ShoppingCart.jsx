@@ -1,12 +1,6 @@
-// import  { useState, useEffect } from "react";
-
 export default function ({ shoppingCart, setShoppingCart }) {
-  // const [subTotal, setSubTotal] = useState(0);
-  // const [delivery, setDelivery] = useState(0);
-  // const [total, setTotal] = useState(0);
-  //console.log(shoppingCart);
   const subTotal = shoppingCart.reduce(
-    (a, b) => a + b.number * parseFloat(b.price), //parseFloat(a.price) * a.number + parseFloat(b.price) * b.number;
+    (a, b) => a + b.number * parseFloat(b.price),
     0
   );
   const delivery = 2.6;

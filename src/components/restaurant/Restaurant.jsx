@@ -19,11 +19,6 @@ export default function ({ data, shoppingCart, setShoppingCart }) {
           />
         </div>
       </div>
-      {/* <div className="Cart-minus-container">
-        <button disabled="" className="Cart-minus-button-disabled">
-          <span>Voir le panier</span>
-        </button>
-      </div> */}
     </>
   );
 }

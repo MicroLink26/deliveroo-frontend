@@ -11,42 +11,24 @@ function App() {
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3200/");
-      // console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-  // {
-  //   item:"",
-  //   number:"",
-  //   price:""
-  // }
-  const setNewCard = (action, item) => {
-    //console.log(action, item);
-    let findElem = shoppingCart.filter((elem) => elem.item === item.item)[0];
-    // if ((action = "ADD")) {
 
-    //console.log(findElem);
+  const setNewCard = (action, item) => {
+    let findElem = shoppingCart.filter((elem) => elem.item === item.item)[0];
+
     if (findElem !== undefined) {
-      //const index = shoppingCart.findIndex(
-      //  (elem) => findElem.item === elem.item
-      //);
-      //console.log("existing item");
       if (action === "ADD") {
         findElem.number++;
       } else {
         findElem.number--;
       }
 
-      // setShoppingCart([
-      //   ...shoppingCart.filter((elem) => elem.item !== item.item),
-      //   findElem,
-      // ]);
       setShoppingCart([...shoppingCart]);
-      //.splice(index, 1, findElem)
-      //setShoppingCart([...shoppingCart.splice(index, 1, findElem)]);
     } else {
       setShoppingCart([...shoppingCart, item]);
     }

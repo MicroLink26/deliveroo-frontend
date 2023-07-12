@@ -2,8 +2,7 @@ import { nanoid } from "nanoid";
 
 export default function ({ meal, setShoppingCart }) {
   const item = { item: meal.title, number: 1, price: meal.price };
-  //onClick={setShoppingCart("ADD", item)}
-  //console.log(setShoppingCart);
+
   const addToCart = (elem) => {
     setShoppingCart("ADD", elem);
   };
