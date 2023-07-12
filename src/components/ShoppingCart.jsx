@@ -1,6 +1,21 @@
+// import  { useState, useEffect } from "react";
+
 export default function ({ shoppingCart, setShoppingCart }) {
+  // const [subTotal, setSubTotal] = useState(0);
+  // const [delivery, setDelivery] = useState(0);
+  // const [total, setTotal] = useState(0);
+  //console.log(shoppingCart);
+  const subTotal = shoppingCart.reduce(
+    (a, b) => a + b.number * parseFloat(b.price), //parseFloat(a.price) * a.number + parseFloat(b.price) * b.number;
+    0
+  );
+  const delivery = 2.6;
+  const total = subTotal + delivery;
+
+  const formatNumber = (number) => {
+    return number.toFixed(2).toString().replace(".", ",");
+  };
   const changeCart = (action, elem) => {
-    //console.log("action>", action);
     setShoppingCart(action, elem);
   };
   return (
@@ -70,16 +85,16 @@ export default function ({ shoppingCart, setShoppingCart }) {
             <div className="Cart--results">
               <div className="Cart--result-line">
                 <span className="Cart--result-name">Sous-total</span>
-                <span className="Cart--amount">90,60 €</span>
+                <span className="Cart--amount">{formatNumber(subTotal)} €</span>
               </div>
               <div className="Cart--result-line">
                 <span className="Cart--result-name">Frais de livraison</span>
-                <span>2,50 €</span>
+                <span>{formatNumber(delivery)} €</span>
               </div>
             </div>
             <div className="Cart--total">
               <span className="Cart--result-name">Total</span>
-              <span className="Cart--amount">93,10 €</span>
+              <span className="Cart--amount">{formatNumber(total)} €</span>
             </div>
           </div>
         ) : (
