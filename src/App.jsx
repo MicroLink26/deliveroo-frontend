@@ -6,22 +6,54 @@ import axios from "axios";
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3200/");
-    // console.log(response.data);
-    setData(response.data);
-    setIsLoading(false);
+    try {
+      const response = await axios.get(
+        "https://site--deliveroo-backend--fg6zdpvl2w9z.code.run/"
+      );
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setNewCard = (action, item) => {
+    let findElem = shoppingCart.filter((elem) => elem.item === item.item)[0];
+
+    if (findElem !== undefined) {
+      if (action === "ADD") {
+        findElem.number++;
+      } else {
+        findElem.number--;
+      }
+
+      setShoppingCart([...shoppingCart]);
+    } else {
+      setShoppingCart([...shoppingCart, item]);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (shoppingCart.filter((elem) => elem.number === 0).length > 0)
+      setShoppingCart([...shoppingCart.filter((elem) => elem.number !== 0)]);
+  }, [shoppingCart]);
+
   return isLoading ? (
     <span>En cours de chargement... </span>
   ) : (
     <>
-      <Restaurant data={data} />
+      <Restaurant
+        data={data}
+        shoppingCart={shoppingCart}
+        setShoppingCart={setNewCard}
+      />
     </>
   );
 }
