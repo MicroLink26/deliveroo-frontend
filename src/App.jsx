@@ -10,7 +10,9 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3200/");
+      const response = await axios.get(
+        "https://site--deliveroo-backend--fg6zdpvl2w9z.code.run/"
+      );
       setData(response.data);
       setIsLoading(false);
     } catch (error) {
